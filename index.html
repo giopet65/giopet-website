@@ -2,58 +2,104 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>giopet — sito in costruzione</title>
-  <meta name="description" content="Il sito personale di giopet: CV, progetti e note tecniche. In costruzione.">
+  <meta name="description" content="Sito personale di giopet, consulente informatico e Solution Architect: curriculum, note tecniche e progetti hobby su ESP32. In costruzione.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://giopet.eu/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Anteprima per i social (WhatsApp, LinkedIn, Telegram, …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="giopet">
+  <meta property="og:url" content="https://giopet.eu/">
+  <meta property="og:title" content="giopet · sito in costruzione">
+  <meta property="og:description" content="Consulente informatico e Solution Architect. Curriculum, note tecniche e progetti hobby su ESP32.">
+  <meta property="og:image" content="https://giopet.eu/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo giopet con una pista di rame che accende un LED: sito in costruzione">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <script>
+    /* applica subito tema e classe js, prima del disegno della pagina, per evitare sfarfallii */
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        var t = localStorage.getItem('giopet-theme');
+        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="sheet">
-    <header class="hero">
-      <svg class="trace" viewBox="0 0 400 120" aria-hidden="true" focusable="false">
-        <path class="trace-line" d="M8 100 H140 L170 70 H300 L330 40 H372" />
-        <circle class="pad" cx="8" cy="100" r="6" />
-        <circle class="pad" cx="372" cy="40" r="6" />
-      </svg>
+  <main class="page">
+    <div class="topbar" id="topbar" hidden>
+      <button class="toggle" id="langToggle" type="button" role="switch" aria-checked="false" aria-label="English">
+        <span class="opt a">IT</span><span class="sw" aria-hidden="true"></span><span class="opt b">EN</span>
+      </button>
+      <button class="toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Tema scuro">
+        <span class="opt a" data-i18n="light">Chiaro</span><span class="sw" aria-hidden="true"></span><span class="opt b" data-i18n="dark">Scuro</span>
+      </button>
+    </div>
 
-      <h1 class="wordmark">giopet</h1>
+    <div class="site ready" id="site">
+      <div class="left">
+        <header class="hero">
+          <div class="circuit">
+            <svg class="zz start" viewBox="0 0 49 76" aria-hidden="true" focusable="false"><path pathLength="1" d="M8 68 H24 L49 43"/><circle cx="8" cy="68" r="4.5"/></svg>
+            <span class="run-line r1 mid" aria-hidden="true"></span>
+            <svg class="zz step" viewBox="0 0 25 76" aria-hidden="true" focusable="false"><path pathLength="1" d="M0 43 L25 18"/></svg>
+            <span class="run-line r2" aria-hidden="true"></span>
+            <svg class="zz dip" viewBox="0 0 56 46" aria-hidden="true" focusable="false"><path pathLength="1" d="M0 18 L14 32 H42 L56 18"/></svg>
+            <span class="run-line r3" aria-hidden="true"></span>
+            <p class="pill" id="pill" role="status"><span class="led" aria-hidden="true"></span><span><span class="long" data-i18n="pillLong">Sito </span><span data-i18n="pillShort">in costruzione</span></span></p>
+          </div>
+          <h1 class="wordmark">giopet</h1>
+        </header>
 
-      <p class="status" role="status">
-        <span class="led" aria-hidden="true"></span>
-        Sito in costruzione
-      </p>
-    </header>
+        <p class="tagline" data-i18n-html="tagline">Sito personale di un consulente informatico che lavora come <strong>Solution Architect</strong> e, per passione, si diverte con elettronica e programmazione. Qui trovi il curriculum, le note tecniche e i progetti hobby su ESP32.</p>
 
-    <section class="intro" aria-labelledby="intro-title">
-      <h2 id="intro-title">Ciao, sono giopet.</h2>
-      <p>
-        Sono un informatico. Qui raccoglierò il mio curriculum, i progetti a cui lavoro
-        e qualche nota tecnica, dai microcontrollori ESP32 all'integrazione di sistemi.
-      </p>
-    </section>
+        <div class="contacts">
+          <a class="btn primary" href="mailto:giopet@giopet.eu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span data-i18n="write">Scrivimi</span></a>
+          <!-- GitHub: link da aggiungere quando sarà pronto (href="https://github.com/…") -->
+          <a class="btn" aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/giopet/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a>
+        </div>
 
-    <section class="coming" aria-labelledby="coming-title">
-      <h2 id="coming-title">Cosa troverai</h2>
-      <ul>
-        <li><strong>Curriculum:</strong> esperienze, competenze e formazione.</li>
-        <li><strong>Progetti:</strong> codice e prototipi, a partire dall'IoT su ESP32.</li>
-        <li><strong>Note:</strong> appunti su strumenti, architetture e diagrammi.</li>
-      </ul>
-    </section>
+        <p class="mail"><span data-i18n="copyLbl">oppure copia l'indirizzo:</span> <span class="addr" id="mailAddr">giopet@giopet.eu</span><button class="copy" id="copyMail" type="button" data-i18n="copy" hidden>Copia</button></p>
+      </div>
 
-    <section class="contact" aria-labelledby="contact-title">
-      <p>
-        Per scrivermi: <a href="mailto:info@giopet.eu">info@giopet.eu</a>.
-      </p>
-    </section>
+      <pre class="term ready" id="term" aria-label="Log di avvio del sito"><span class="head"><span>/dev/ttyUSB0 · 115200 baud</span><span>giopet.eu</span></span><span class="row"><span class="prompt">giopet@esp32:~$</span> ./boot giopet.eu</span>
+<span class="row l"><span class="dim">[0.012]</span> profilo ........... <span class="ok">[ OK ]</span></span>
+<span class="row d">chi sono, in breve</span>
+<span class="row l"><span class="dim">[0.230]</span> curriculum ........ <span class="wip">[ WIP ]</span></span>
+<span class="row d">esperienze, competenze, formazione</span>
+<span class="row l"><span class="dim">[0.481]</span> progetti/esp32 .... <span class="wip">[ WIP ]</span></span>
+<span class="row d">hobby: elettronica e IoT su ESP32</span>
+<span class="row l"><span class="dim">[0.702]</span> note tecniche ..... <span class="wip">[ WIP ]</span></span>
+<span class="row d">strumenti, architetture, diagrammi</span>
+<span class="row l"><span class="dim">[0.903]</span> contatti .......... <span class="ok">[ OK ]</span></span>
+<span class="row"><span class="prompt">giopet@esp32:~$</span> <span class="cursor"></span></span></pre>
+    </div>
 
     <footer class="foot">
-      <p>&copy; 2026 giopet</p>
+      <div class="foot-row">
+        <span>&copy; 2026 Giovanni Petrillo · <a href="https://giopet.eu">giopet.eu</a> · <a href="https://giopet.dev">giopet.dev</a></span>
+        <span><span data-i18n="updated">ultimo aggiornamento</span>: <time datetime="2026-11-06" id="updDate">06/11/2026</time> · rev. 0.1</span>
+      </div>
+      <p class="privacy">
+        <b>Privacy</b>
+        <span data-i18n-html="privacy">Nessun cookie di profilazione, nessuna statistica, nessun modulo: tema e lingua restano nel tuo browser. GitHub Pages, che ospita il sito, può registrare gli indirizzi IP per sicurezza (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">informativa</a>). Le email ricevute servono solo a rispondere. Titolare: giopet@giopet.eu.</span>
+      </p>
     </footer>
   </main>
 </body>

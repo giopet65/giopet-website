@@ -2,35 +2,46 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Pagina non trovata — giopet</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
+  <style>
+    .notfound { max-width: 34rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  </style>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('giopet-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
-  <main class="sheet">
-    <header class="hero">
-      <h1 class="wordmark">404</h1>
-      <p class="status" role="status">
-        <span class="led" aria-hidden="true"></span>
-        Pagina non trovata
-      </p>
-    </header>
-
-    <section>
-      <h2>Questa pagina non esiste</h2>
-      <p>
-        L'indirizzo potrebbe essere sbagliato, oppure la pagina non è ancora stata pubblicata.
-        Torna alla <a href="/">pagina iniziale</a>.
-      </p>
-    </section>
+  <main class="page">
+    <div class="site">
+      <div class="left notfound">
+        <header class="hero">
+          <div class="circuit">
+            <svg class="zz start" viewBox="0 0 49 76" aria-hidden="true" focusable="false"><path d="M8 68 H24 L49 43"/><circle cx="8" cy="68" r="4.5"/></svg>
+            <span class="run-line mid" aria-hidden="true"></span>
+            <svg class="zz step" viewBox="0 0 25 76" aria-hidden="true" focusable="false"><path d="M0 43 L25 18"/></svg>
+            <span class="run-line" aria-hidden="true"></span>
+            <p class="pill on" role="status"><span class="led" aria-hidden="true"></span>Pagina non trovata</p>
+          </div>
+          <h1 class="wordmark">404</h1>
+        </header>
+        <p class="tagline">L'indirizzo potrebbe essere sbagliato, oppure la pagina non è ancora stata pubblicata. Torna alla <a href="/">pagina iniziale</a>.</p>
+        <p lang="en" style="color:var(--ink-soft);font-size:.95rem">Page not found. Go back to the <a href="/">home page</a>.</p>
+      </div>
+    </div>
 
     <footer class="foot">
-      <p>&copy; 2026 giopet</p>
+      <div class="foot-row">
+        <span>&copy; 2026 Giovanni Petrillo · <a href="https://giopet.eu">giopet.eu</a> · <a href="https://giopet.dev">giopet.dev</a></span>
+      </div>
     </footer>
   </main>
 </body>
