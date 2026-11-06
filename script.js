@@ -1,4 +1,4 @@
-/* giopet.eu — animazione della pista, log di avvio, levette tema/lingua, copia email.
+/* giopet.eu — animazione della pista, log di avvio, levette tema/lingua, oggetto email per lingua.
    Senza JavaScript la pagina resta completa: testo visibile, pista disegnata, LED acceso. */
 (function () {
   'use strict';
@@ -11,6 +11,7 @@
 
   /* ---------- Testi IT / EN ---------- */
 
+  var MAIL = 'giopet@giopet.eu';
   var GH_PRIVACY = 'https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement';
 
   var T = {
@@ -20,7 +21,7 @@
       pillLong: 'Sito ', pillShort: 'in costruzione',
       tagline: 'Sito personale di un consulente informatico che lavora come <strong>Solution Architect</strong> e, per passione, si diverte con elettronica e programmazione. Qui trovi il curriculum, le note tecniche e i progetti hobby su ESP32.',
       write: 'Scrivimi',
-      copyLbl: "oppure copia l'indirizzo:", copy: 'Copia', copied: 'Copiato', selected: 'Selezionato',
+      subject: '[giopet.eu] Contatto dal sito',
       updated: 'ultimo aggiornamento', date: '06/11/2026',
       themeAria: 'Tema scuro', termAria: 'Log di avvio del sito',
       privacy: 'Nessun cookie di profilazione, nessuna statistica, nessun modulo: tema e lingua restano nel tuo browser. GitHub Pages, che ospita il sito, può registrare gli indirizzi IP per sicurezza (<a href="' + GH_PRIVACY + '" target="_blank" rel="noopener">informativa</a>). Le email ricevute servono solo a rispondere. Titolare: giopet@giopet.eu.',
@@ -42,7 +43,7 @@
       pillLong: 'Site ', pillShort: 'under construction',
       tagline: "Personal site of an IT consultant who works as a <strong>Solution Architect</strong> and, as a hobby, tinkers with electronics and programming. Here you'll find my résumé, tech notes and ESP32 hobby projects.",
       write: 'Email me',
-      copyLbl: 'or copy the address:', copy: 'Copy', copied: 'Copied', selected: 'Selected',
+      subject: '[giopet.eu] Contact from the website',
       updated: 'last updated', date: '2026-11-06',
       themeAria: 'Dark theme', termAria: 'Site boot log',
       privacy: 'No profiling cookies, no analytics, no forms: theme and language stay in your browser. GitHub Pages, which hosts the site, may log IP addresses for security (<a href="' + GH_PRIVACY + '" target="_blank" rel="noopener">privacy statement</a>). Emails I receive are used only to reply. Controller: giopet@giopet.eu.',
@@ -91,6 +92,8 @@
       el.innerHTML = t[el.getAttribute('data-i18n-html')];
     });
     document.getElementById('updDate').textContent = t.date;
+    document.getElementById('mailBtn').setAttribute('href',
+      'mailto:' + MAIL + '?subject=' + encodeURIComponent(t.subject));
     document.getElementById('themeToggle').setAttribute('aria-label', t.themeAria);
     document.getElementById('langToggle').setAttribute('aria-checked', lang === 'en' ? 'true' : 'false');
     renderTerm();
@@ -155,33 +158,4 @@
   if (darkQuery.addEventListener) darkQuery.addEventListener('change', syncTheme);
 
   document.getElementById('topbar').hidden = false;
-
-  /* ---------- Copia email ---------- */
-
-  var copyBtn = document.getElementById('copyMail');
-  var addr = document.getElementById('mailAddr');
-  copyBtn.hidden = false;
-
-  function selectAddr() {
-    var range = document.createRange();
-    range.selectNodeContents(addr);
-    var sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-  }
-  function flash(key) {
-    copyBtn.textContent = T[lang][key];
-    setTimeout(function () { copyBtn.textContent = T[lang].copy; }, 1600);
-  }
-  copyBtn.addEventListener('click', function () {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(addr.textContent).then(
-        function () { flash('copied'); },
-        function () { selectAddr(); flash('selected'); }
-      );
-    } else {
-      selectAddr();
-      flash('selected');
-    }
-  });
 })();

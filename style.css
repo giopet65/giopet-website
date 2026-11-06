@@ -387,36 +387,6 @@ a:hover {
   cursor: default;
 }
 
-.mail {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-}
-.mail .addr {
-  color: var(--ink);
-  user-select: all;
-}
-
-.copy {
-  padding: 0.15rem 0.45rem;
-  border: 1.5px solid var(--ink-soft);
-  border-radius: 4px;
-  background: transparent;
-  color: var(--ink-soft);
-  font: 600 0.72rem var(--font-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.copy:hover {
-  border-color: var(--copper);
-  color: var(--copper);
-}
-
 /* --- Log di avvio --- */
 
 .term {
