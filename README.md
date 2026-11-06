@@ -1,2 +1,2 @@
-# giopet-website
-giopet website contents
+# giopet.eu website
+giopet website contents in giopet-website
