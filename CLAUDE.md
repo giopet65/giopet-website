@@ -8,6 +8,10 @@ Static single-page "site under construction" for giopet.eu (personal site of an 
 
 The README is a one-liner. Converse with the user in Italian; code comments and commit messages are also in Italian, so keep them that way. The site content itself is bilingual (Italian and English).
 
+## Git rule
+
+Never run `git commit` or `git push` without the user's explicit request. Consent applies only to that single request: when work is done, stop and propose the commit instead of making it.
+
 ## Architecture
 
 - [index.html](index.html): static markup, SEO/OpenGraph meta, and a tiny inline script in `<head>` that adds the `js` class and applies the saved theme (`localStorage` key `giopet-theme`) before first paint to avoid flicker. The language/theme toggles live in `#topbar`, which is `hidden` until JS runs.
