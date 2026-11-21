@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{%- assign t = site.data.i18n[page.lang] -%}
+    <article class="article">
+      <header class="art-head">
+        <p class="crumb"><a href="/{{ page.lang }}/articles/">{{ t.articles }}</a></p>
+        <h1>{{ page.title }}</h1>
+        <p class="meta">
+          {%- include article-date.html name=page.name lang=page.lang -%}
+          {%- for tag in page.tags %} <span class="tag">{{ tag }}</span>{% endfor -%}
+        </p>
+      </header>
+      <div class="prose">
+{{ content }}
+      </div>
+      <p class="art-back"><a href="/{{ page.lang }}/articles/">&larr; {{ t.back }}</a></p>
+    </article>

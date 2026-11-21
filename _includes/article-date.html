@@ -1,0 +1,9 @@
+{%- comment -%}
+  Data dell'articolo, ricavata dai primi 8 caratteri del nome file (AAAAMMGG-NN-titolo.md).
+  Parametri: name (nome file), lang (it | en). Formato come nella home: GG/MM/AAAA in italiano, AAAA-MM-GG in inglese.
+{%- endcomment -%}
+{%- assign y = include.name | slice: 0, 4 -%}
+{%- assign m = include.name | slice: 4, 2 -%}
+{%- assign d = include.name | slice: 6, 2 -%}
+{%- assign iso = y | append: '-' | append: m | append: '-' | append: d -%}
+<time datetime="{{ iso }}">{% if include.lang == 'it' %}{{ d }}/{{ m }}/{{ y }}{% else %}{{ iso }}{% endif %}</time>

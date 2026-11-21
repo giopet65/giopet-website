@@ -1,0 +1,31 @@
+# Configurazione Jekyll: GitHub Pages compila il sito a ogni push su main.
+title: giopet
+url: https://giopet.eu
+permalink: pretty   # pagine pubblicate senza estensione, es. /it/articles/20261121-01-titolo/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-sitemap
+
+# file del repository che non devono finire sul sito
+exclude:
+  - CLAUDE.md
+  - README.md
+  - docs
+
+# la lingua e il layout degli articoli si ricavano dalla cartella
+defaults:
+  - scope:
+      path: "it/articles"
+    values:
+      lang: it
+      layout: article
+  - scope:
+      path: "en/articles"
+    values:
+      lang: en
+      layout: article

@@ -523,6 +523,251 @@ a:hover {
   text-transform: uppercase;
 }
 
+/* --- Articoli (pagine generate da Jekyll: _layouts/) --- */
+
+.art-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.4rem;
+}
+.art-bar [hidden] {
+  display: none !important;
+}
+.art-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.4rem;
+}
+.brand {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-decoration: none;
+}
+/* la levetta della lingua è un link: lo stato si legge da data-lang */
+a.toggle {
+  text-decoration: none;
+}
+a.toggle[data-lang="it"] .opt.a,
+a.toggle[data-lang="en"] .opt.b {
+  color: var(--ink);
+}
+a.toggle[data-lang="en"] .sw::after {
+  transform: translateX(1.05rem);
+}
+
+.article,
+.art-list {
+  width: 100%;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+.art-head {
+  margin-bottom: 1.4rem;
+}
+.art-head h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5.5vw, 2.9rem);
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.crumb {
+  margin-bottom: 0.7rem;
+  font: 600 0.72rem var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lead {
+  max-width: 34rem;
+  margin-top: 0.8rem;
+  color: var(--ink-soft);
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin-top: 0.8rem;
+  color: var(--ink-soft);
+  font: 600 0.78rem var(--font-mono);
+}
+.tag {
+  padding: 0.05rem 0.5rem;
+  border: 1.5px solid var(--grid-major);
+  border-radius: 4px;
+}
+.art-back {
+  margin-top: 1.6rem;
+  font: 600 0.8rem var(--font-mono);
+}
+
+/* elenco */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  padding: 1.1rem 1.3rem 1.2rem;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--card);
+  box-shadow: 5px 5px 0 var(--grid-major);
+}
+.card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: 1.15;
+}
+.card h2 a {
+  text-decoration: none;
+}
+.card .meta {
+  margin-top: 0.5rem;
+}
+.card .desc {
+  margin-top: 0.6rem;
+}
+
+/* testo dell'articolo */
+.prose {
+  padding: clamp(1.1rem, 4vw, 2.4rem);
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--card);
+  box-shadow: 5px 5px 0 var(--grid-major);
+  overflow-wrap: break-word;
+}
+.prose > :first-child {
+  margin-top: 0;
+}
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote,
+.prose pre,
+.prose table,
+.prose .highlighter-rouge {
+  margin: 1rem 0 0;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin: 2rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.prose h2 { font-size: 1.65rem; }
+.prose h3 { font-size: 1.3rem; }
+.prose h4 { font-size: 1.1rem; }
+.prose h2 + *,
+.prose h3 + *,
+.prose h4 + * {
+  margin-top: 0.7rem;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+.prose li + li {
+  margin-top: 0.4rem;
+}
+.prose blockquote {
+  padding: 0.1rem 1rem;
+  border-left: 4px solid var(--copper);
+  color: var(--ink-soft);
+}
+.prose hr {
+  margin: 1.8rem 0;
+  border: 0;
+  border-top: 1.5px dashed var(--grid-major);
+}
+.prose code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--grid);
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+.prose pre {
+  overflow-x: auto;
+  padding: 1rem 1.15rem;
+  border: 2px solid var(--ink);
+  border-radius: 9px;
+  background: var(--term-bg);
+  color: var(--term-ink);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.prose pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+/* immagini: l'eventuale riga in corsivo subito dopo è la didascalia */
+.prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.4rem auto 0.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 7px;
+  background: var(--paper);
+}
+.prose p:has(> img) {
+  margin-top: 0;
+  text-align: center;
+}
+.prose p:has(> img) em {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  font-style: normal;
+}
+.prose table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose th,
+.prose td {
+  padding: 0.45rem 0.8rem;
+  border: 1.5px solid var(--grid-major);
+  text-align: left;
+}
+.prose th {
+  background: var(--grid);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* colori del codice (Rouge): i blocchi sono scuri in entrambi i temi, come il log di avvio */
+.highlight :is(.c, .c1, .cm, .cs, .cp, .cpf) { color: #7f98a8; font-style: italic; }
+.highlight :is(.k, .kd, .kn, .kp, .kr, .kt, .kc, .ow) { color: #7cc0ff; }
+.highlight :is(.s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss) { color: #5cc27a; }
+.highlight :is(.m, .mi, .mf, .mh, .mo, .mb, .il) { color: #ffb51f; }
+.highlight :is(.nf, .nc, .nn, .nb, .bp, .no, .nd, .ne, .nt, .nl) { color: #e3a173; }
+.highlight .err { color: #ff8a80; }
+
 /* --- Telefono --- */
 
 @media (max-width: 480px) {

@@ -1,4 +1,4 @@
-/* giopet.eu — animazione della pista, log di avvio, levette tema/lingua, oggetto email per lingua.
+/* giopet.eu — animazione della pista, log di avvio, levette tema/lingua, oggetto email e link articoli per lingua.
    Senza JavaScript la pagina resta completa: testo visibile, pista disegnata, LED acceso. */
 (function () {
   'use strict';
@@ -20,9 +20,9 @@
       light: 'Chiaro', dark: 'Scuro',
       pillLong: 'Sito ', pillShort: 'in costruzione',
       tagline: 'Sito personale di un consulente informatico che lavora come <strong>Solution Architect</strong> e, per passione, si diverte con elettronica e programmazione. Qui trovi il curriculum, le note tecniche e i progetti hobby su ESP32.',
-      write: 'Scrivimi',
+      write: 'Scrivimi', articles: 'Articoli',
       subject: '[giopet.eu] Contatto dal sito',
-      updated: 'ultimo aggiornamento', date: '06/11/2026',
+      updated: 'ultimo aggiornamento', date: '21/11/2026',
       themeAria: 'Tema scuro', termAria: 'Log di avvio del sito',
       privacy: 'Nessun cookie di profilazione, nessuna statistica, nessun modulo: tema e lingua restano nel tuo browser. GitHub Pages, che ospita il sito, può registrare gli indirizzi IP per sicurezza (<a href="' + GH_PRIVACY + '" target="_blank" rel="noopener">informativa</a>). Le email ricevute servono solo a rispondere. Titolare: giopet@giopet.eu.',
       log: [
@@ -42,9 +42,9 @@
       light: 'Light', dark: 'Dark',
       pillLong: 'Site ', pillShort: 'under construction',
       tagline: "Personal site of an IT consultant who works as a <strong>Solution Architect</strong> and, as a hobby, tinkers with electronics and programming. Here you'll find my résumé, tech notes and ESP32 hobby projects.",
-      write: 'Email me',
+      write: 'Email me', articles: 'Articles',
       subject: '[giopet.eu] Contact from the website',
-      updated: 'last updated', date: '2026-11-06',
+      updated: 'last updated', date: '2026-11-21',
       themeAria: 'Dark theme', termAria: 'Site boot log',
       privacy: 'No profiling cookies, no analytics, no forms: theme and language stay in your browser. GitHub Pages, which hosts the site, may log IP addresses for security (<a href="' + GH_PRIVACY + '" target="_blank" rel="noopener">privacy statement</a>). Emails I receive are used only to reply. Controller: giopet@giopet.eu.',
       log: [
@@ -94,6 +94,7 @@
     document.getElementById('updDate').textContent = t.date;
     document.getElementById('mailBtn').setAttribute('href',
       'mailto:' + MAIL + '?subject=' + encodeURIComponent(t.subject));
+    document.getElementById('articlesBtn').setAttribute('href', '/' + lang + '/articles/');
     document.getElementById('themeToggle').setAttribute('aria-label', t.themeAria);
     document.getElementById('langToggle').setAttribute('aria-checked', lang === 'en' ? 'true' : 'false');
     renderTerm();

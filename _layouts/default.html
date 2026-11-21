@@ -1,0 +1,115 @@
+{%- comment -%}
+  Struttura comune delle pagine degli articoli: intestazione, levette lingua/tema, piè di pagina.
+  Lingua = cartella (it/ o en/), vedi defaults in _config.yml. Testi fissi in _data/i18n.yml.
+  La traduzione di un articolo si trova cercando, nell'altra lingua, il file con lo stesso prefisso AAAAMMGG-NN.
+{%- endcomment -%}
+{%- assign lang = page.lang | default: 'it' -%}
+{%- assign t = site.data.i18n[lang] -%}
+{%- if lang == 'it' -%}{%- assign olang = 'en' -%}{%- else -%}{%- assign olang = 'it' -%}{%- endif -%}
+{%- assign ot = site.data.i18n[olang] -%}
+{%- assign aid = page.name | slice: 0, 11 -%}
+
+{%- comment -%} dove porta la levetta della lingua; has_alt = esiste una pagina equivalente nell'altra lingua {%- endcomment -%}
+{%- assign other_url = '/' | append: olang | append: '/articles/' -%}
+{%- assign has_alt = false -%}
+{%- if page.layout == 'article-list' -%}
+  {%- assign has_alt = true -%}
+{%- elsif page.layout == 'article' -%}
+  {%- assign oprefix = olang | append: '/articles/' -%}
+  {%- for p in site.pages -%}
+    {%- if p.path contains oprefix and p.name != 'index.md' -%}
+      {%- assign pid = p.name | slice: 0, 11 -%}
+      {%- if pid == aid -%}
+        {%- assign other_url = p.url -%}
+        {%- assign has_alt = true -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- if lang == 'it' -%}
+  {%- assign it_url = page.url -%}{%- assign en_url = other_url -%}
+{%- else -%}
+  {%- assign en_url = page.url -%}{%- assign it_url = other_url -%}
+{%- endif -%}
+
+{%- if page.layout == 'article' -%}
+  {%- assign page_title = page.title | append: ' — giopet' -%}
+  {%- assign page_desc = page.description | default: t.list_intro -%}
+  {%- assign og_type = 'article' -%}
+{%- else -%}
+  {%- assign page_title = t.articles | append: ' — giopet' -%}
+  {%- assign page_desc = t.list_intro -%}
+  {%- assign og_type = 'website' -%}
+{%- endif -%}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ page_title | escape }}</title>
+  <meta name="description" content="{{ page_desc | escape }}">
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- if has_alt %}
+  <link rel="alternate" hreflang="it" href="{{ it_url | absolute_url }}">
+  <link rel="alternate" hreflang="en" href="{{ en_url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ it_url | absolute_url }}">
+{%- endif %}
+
+  <meta property="og:type" content="{{ og_type }}">
+  <meta property="og:site_name" content="giopet">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:description" content="{{ page_desc | escape }}">
+  <meta property="og:locale" content="{{ t.locale }}">
+{%- if has_alt %}
+  <meta property="og:locale:alternate" content="{{ ot.locale }}">
+{%- endif %}
+{%- if page.image %}
+  <meta property="og:image" content="{{ '/img/articles/' | append: aid | append: '/' | append: page.image | absolute_url }}">
+{%- else %}
+  <meta property="og:image" content="{{ '/img/og-image.png' | absolute_url }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+{%- endif %}
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    /* applica subito il tema salvato, prima del disegno della pagina, per evitare sfarfallii */
+    (function () {
+      try {
+        var t = localStorage.getItem('giopet-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="/article.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <div class="art-bar">
+      <a class="brand" href="/" aria-label="{{ t.home_aria | escape }}">giopet</a>
+      <div class="art-toggles">
+        <a class="toggle" data-lang="{{ lang }}" href="{{ other_url }}" hreflang="{{ olang }}" lang="{{ olang }}" aria-label="{{ t.lang_label }}"><span class="opt a">IT</span><span class="sw" aria-hidden="true"></span><span class="opt b">EN</span></a>
+        <button class="toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="{{ t.theme_aria }}" hidden>
+          <span class="opt a">{{ t.light }}</span><span class="sw" aria-hidden="true"></span><span class="opt b">{{ t.dark }}</span>
+        </button>
+      </div>
+    </div>
+
+{{ content }}
+
+    <footer class="foot">
+      <div class="foot-row">
+        <span>&copy; 2026 Giovanni Petrillo · <a href="https://giopet.eu">giopet.eu</a> · <a href="https://giopet.dev">giopet.dev</a></span>
+      </div>
+      <p class="privacy">
+        <b>Privacy</b>
+        <span>{{ t.privacy }}</span>
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
