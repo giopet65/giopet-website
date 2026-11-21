@@ -18,6 +18,7 @@ Never run `git commit` or `git push` without the user's explicit request. Consen
 - [script.js](script.js): one IIFE. Holds the **IT/EN translation table `T`** (page strings, mailto subject, last-updated date, privacy text, and the boot-log lines rendered into `#term`). `applyLang()` fills elements via `data-i18n` (textContent) and `data-i18n-html` (innerHTML) attributes, updates `<html lang>`, title and the mailto link. `play()` drives the intro sequence (copper trace draws → LED pill turns on → log rows appear), by toggling classes `run` / `on` / `shown`; with `prefers-reduced-motion` everything is shown immediately. Language persists in `localStorage` key `giopet-lang`.
 - [style.css](style.css): "graph paper" theme with CSS custom properties in `:root`; dark theme is applied both automatically (`prefers-color-scheme`) and explicitly via `:root[data-theme="dark"]`. The hero "circuit" is built from fixed-px SVG segments plus stretchy `.run-line` spans; the geometry comment near line 205 explains the fixed 36px box / y=18 alignment, so keep these in sync when editing the trace. Fonts are self-hosted in `fonts/` (SIL OFL licenses included).
 - [404.html](404.html): standalone error page.
+- Folders: `img/` holds all images (favicon, `og-image.png` referenced by absolute URL in the OpenGraph meta, so keep that path stable: social platforms cache it), `fonts/` the self-hosted fonts.
 
 ## Conventions to preserve
 
