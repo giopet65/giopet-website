@@ -2,7 +2,6 @@
 title: "Non ho scritto una riga di codice: come ho consegnato un prodotto software con un team di agenti AI"
 description: "La mia prima esperienza completa con l'AI nello sviluppo software: come ho guidato un team di agenti AI a consegnare SmartClimaSenseNG, una stazione climatica per Home Assistant, senza scrivere una riga di codice."
 tags: [esp32, home-assistant, ai]
-published: false
 ---
 
 *SmartClimaSenseNG: una stazione climatica per Home Assistant, e il mio primo progetto completo guidato dall'intelligenza artificiale*

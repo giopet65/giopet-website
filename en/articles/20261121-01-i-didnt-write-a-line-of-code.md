@@ -2,7 +2,6 @@
 title: "I didn't write a line of code: how I delivered a software product with a team of AI agents"
 description: "My first end-to-end experience with AI in software development: how I led a team of AI agents to deliver SmartClimaSenseNG, a climate station for Home Assistant, without writing a line of code."
 tags: [esp32, home-assistant, ai]
-published: false
 ---
 
 *SmartClimaSenseNG: a climate station for Home Assistant, and my first complete project led by artificial intelligence*
