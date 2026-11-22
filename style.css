@@ -347,6 +347,21 @@ a:hover {
   font-size: 1.1rem;
 }
 
+/* gruppi di pulsanti: ogni gruppo ha la sua etichetta e la sua riga (che va a capo se si riempie) */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.group + .group {
+  margin-top: -0.2rem;
+}
+.group-label {
+  color: var(--ink-soft);
+  font: 600 0.72rem var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .contacts {
   display: flex;
   flex-wrap: wrap;
@@ -734,6 +749,9 @@ a.toggle[data-lang="en"] .sw::after {
 .prose p:has(> img) {
   margin-top: 0;
   text-align: center;
+}
+.prose p:has(> img) br {
+  display: none;
 }
 .prose p:has(> img) em {
   display: block;

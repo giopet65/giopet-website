@@ -51,7 +51,12 @@ published: false         # solo per le bozze: togliere la riga per pubblicare
 - In `img/articles/<data>-<id>/`, condivise dalle due lingue (niente testo dipendente dalla lingua dentro l'immagine).
 - Nel Markdown si usa il percorso assoluto: `![testo alternativo](/img/articles/20261121-01/nome.png)`.
 - Il testo alternativo è nel Markdown, quindi si traduce con l'articolo.
-- Una riga in corsivo subito sotto l'immagine (senza riga vuota) diventa la didascalia.
+- La didascalia è una riga in corsivo subito sotto l'immagine, senza riga vuota. La riga dell'immagine termina con **due spazi**, che forzano l'a capo anche nelle anteprime Markdown (kramdown li accetta di sicuro; il `\` finale no, o almeno non è verificato). Non vanno tolti dall'editor:
+  ```
+  ![testo alternativo](/img/articles/20261121-01/nome.png)··
+  *Didascalia.*
+  ```
+  (`··` = i due spazi finali)
 - Preferire PNG con risoluzione adeguata e sfondo che regga sia il tema chiaro sia quello scuro.
 
 ## Flusso di lavoro
