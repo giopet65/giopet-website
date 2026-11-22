@@ -26,7 +26,7 @@ SmartClimaSenseNG is a **desktop climate station** based on ESP32, with a 320×2
 
 I designed it as an object to keep at home and read "from a distance": big digits, colors that tell you at a glance if something is wrong, no maintenance.
 
-The images below come from the mockup prepared by the UI designer agent during the solution analysis phase: they are not screenshots of the real app, but they give a very realistic picture of it.
+The images below come from the mockup prepared by the UI designer agent during the solution design phase: they are not screenshots of the real app, but they give a very realistic picture of it.
 
 ![The Main screen, indoor view: temperature, humidity, heat index and time](/img/articles/20261121-01/interno.png)  
 *The Main screen, indoor view: temperature, humidity, heat index and time.*

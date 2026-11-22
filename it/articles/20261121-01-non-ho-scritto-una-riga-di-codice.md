@@ -26,7 +26,7 @@ SmartClimaSenseNG è una **stazione climatica da tavolo** basata su ESP32, con u
 
 L'ho pensato come un oggetto da tenere in casa e leggere "da lontano": cifre grandi, colori che dicono subito se qualcosa non va, nessuna manutenzione.
 
-Le immagini che seguono provengono dal mockup preparato dall'agente designer UI nella fase di analisi della soluzione: non sono screenshot dell'app reale, ma ne danno un'idea molto realistica.
+Le immagini che seguono provengono dal mockup preparato dall'agente designer UI nella fase di design della soluzione: non sono screenshot dell'app reale, ma ne danno un'idea molto realistica.
 
 ![La schermata Principale, vista interna: temperatura, umidità, indice di calore e ora](/img/articles/20261121-01/interno.png)  
 *La schermata Principale, vista interna: temperatura, umidità, indice di calore e ora.*
