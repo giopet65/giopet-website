@@ -16,6 +16,9 @@ exclude:
   - CLAUDE.md
   - README.md
   - docs
+  - Gemfile
+  - Gemfile.lock
+  - vendor
 
 # la lingua e il layout degli articoli si ricavano dalla cartella
 defaults:

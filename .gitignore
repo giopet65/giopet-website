@@ -1,0 +1,9 @@
+# Generati da Jekyll in locale
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# Dipendenze Ruby
+Gemfile.lock
+vendor/
+.bundle/
