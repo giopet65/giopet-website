@@ -66,13 +66,14 @@ published: false         # solo per le bozze: togliere la riga per pubblicare
    in `img/articles/<data>-<id>/`, corregge i percorsi, toglie eventuali note di lavoro e segnaposto.
 3. **Claude** traduce in `en/articles/<data>-<id>-<titolo-inglese>.md` (stesso `<data>-<id>`), seguendo le regole
    sotto. Giovanni rivede la traduzione.
-4. Si lavora sul branch `articles` (o su un branch dedicato). Finché non è tutto pronto i file restano con `published: false`.
+4. Si lavora sul branch `articles` (o su un branch dedicato). Finché non è tutto pronto i file restano con `published: false` (in locale le bozze si vedono avviando `bundle exec jekyll serve --unpublished`).
 5. **Commit e push solo su richiesta esplicita di Giovanni**; il consenso vale per la singola richiesta.
 6. Per pubblicare: togliere `published: false` da entrambi i file, poi merge su `main` (sempre su richiesta esplicita).
 7. Dopo il merge: attendere la compilazione di GitHub Pages (di solito meno di un minuto) e fare i controlli sotto.
 
-Non c'è anteprima locale (Ruby/Docker non installati): il primo controllo reale avviene dopo il merge su `main`, quindi
-conviene rileggere con attenzione i file prima di pubblicare.
+Anteprima locale: dalla radice del repository `bundle exec jekyll serve`, poi `http://localhost:4000` (home, elenchi e articoli).
+Si ricarica da sola a ogni salvataggio, tranne `_config.yml` che richiede il riavvio. Dopo il merge su `main` si controllano comunque
+le pagine online.
 
 ## Regole di traduzione
 
@@ -92,6 +93,7 @@ conviene rileggere con attenzione i file prima di pubblicare.
 ## Controlli dopo la pubblicazione
 
 - `https://giopet.eu/it/articles/` e `https://giopet.eu/en/articles/` mostrano l'articolo.
+- La home (`https://giopet.eu/`) mostra l'articolo tra gli ultimi 2 della lingua attiva (italiano e inglese).
 - La levetta IT/EN porta alla traduzione e il codice sorgente della pagina contiene i tre `hreflang` (it, en, x-default).
 - Le immagini si vedono in tema chiaro e scuro; tabelle e codice, se presenti, sono leggibili anche da telefono.
 - `https://giopet.eu/sitemap.xml` elenca le due pagine.

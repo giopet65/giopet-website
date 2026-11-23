@@ -658,6 +658,17 @@ a.toggle[data-lang="en"] .sw::after {
   margin-top: 0.6rem;
 }
 
+/* home: sotto introduzione e terminale, a tutta larghezza, vengono gli ultimi articoli e poi i contatti */
+.below {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: -1rem; /* si somma al gap di 2rem di .page: distanza finale 1rem dal blocco sopra */
+}
+.below .empty {
+  color: var(--ink-soft);
+}
+
 /* testo dell'articolo */
 .prose {
   padding: clamp(1.1rem, 4vw, 2.4rem);

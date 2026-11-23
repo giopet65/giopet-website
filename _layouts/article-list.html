@@ -14,16 +14,7 @@ layout: default
 {%- for p in sorted -%}
   {%- if p.path contains prefix and p.name != 'index.md' -%}
     {%- assign count = count | plus: 1 %}
-        <li class="card">
-          <h2><a href="{{ p.url }}">{{ p.title }}</a></h2>
-          <p class="meta">
-            {%- include article-date.html name=p.name lang=page.lang -%}
-            {%- for tag in p.tags %} <span class="tag">{{ tag }}</span>{% endfor -%}
-          </p>
-          {%- if p.description %}
-          <p class="desc">{{ p.description }}</p>
-          {%- endif %}
-        </li>
+        {% include article-card.html p=p lang=page.lang %}
   {%- endif -%}
 {%- endfor %}
       </ul>

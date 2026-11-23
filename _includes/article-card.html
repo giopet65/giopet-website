@@ -1,0 +1,14 @@
+{%- comment -%}
+  Card di un articolo, usata dall'elenco completo e dalla home.
+  Parametri: p (pagina dell'articolo), lang (it | en).
+{%- endcomment -%}
+<li class="card">
+  <h2><a href="{{ include.p.url }}">{{ include.p.title }}</a></h2>
+  <p class="meta">
+    {%- include article-date.html name=include.p.name lang=include.lang -%}
+    {%- for tag in include.p.tags %} <span class="tag">{{ tag }}</span>{% endfor -%}
+  </p>
+  {%- if include.p.description %}
+  <p class="desc">{{ include.p.description }}</p>
+  {%- endif %}
+</li>
